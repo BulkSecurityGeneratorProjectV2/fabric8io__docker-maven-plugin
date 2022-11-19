@@ -27,6 +27,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 
 import static io.fabric8.maven.docker.config.ArchiveCompression.gzip;
@@ -137,7 +138,7 @@ class BuildImageConfigurationTest {
 
     @Test
     void contextDirAndAbsoluteDockerfile() throws IOException {
-        File tempDockerFile = File.createTempFile("Dockerfile", "");
+        File tempDockerFile = Files.createTempFile("Dockerfile", "").toFile();
         tempDockerFile.deleteOnExit();
         BuildImageConfiguration config = new BuildImageConfiguration.Builder()
             .dockerFile(tempDockerFile.getAbsolutePath())

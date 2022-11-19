@@ -113,7 +113,7 @@ class PortMappingPropertyWriteHelperTest {
     }
 
     private String createTmpFile() throws IOException {
-        File propFile = File.createTempFile("dmpl-", ".properties");
+        File propFile = Files.createTempFile("dmpl-", ".properties").toFile();
         propFile.deleteOnExit();
 
         return propFile.getAbsolutePath();

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -115,7 +116,7 @@ class ContainerCreateConfigTest {
     }
 
     private String copyPropsToFile() throws IOException {
-        File tempFile = File.createTempFile("dockertest", "props");
+        File tempFile = Files.createTempFile("dockertest", "props").toFile();
         FileUtils.copyInputStreamToFile(getClass().getResourceAsStream("test-environment.props"), tempFile);
         return tempFile.getAbsolutePath();
     }

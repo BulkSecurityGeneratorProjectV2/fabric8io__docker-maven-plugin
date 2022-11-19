@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 /**
  * Utility methods and constants for path-related tests
@@ -130,7 +131,7 @@ public class PathTestUtil {
      */
     public static File createTmpFile(String nameHint, TMP_FILE_PRESERVE_MODE preserveMode) {
         try {
-            File tmpFile = File.createTempFile(nameHint, ".tmp");
+            File tmpFile = Files.createTempFile(nameHint, ".tmp").toFile();
             Assertions.assertTrue(tmpFile.isAbsolute(), "The created temporary file " + tmpFile + " is not absolute!");
             if (preserveMode != null) {
                 switch (preserveMode) {

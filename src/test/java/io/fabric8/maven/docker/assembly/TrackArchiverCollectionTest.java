@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,7 +32,7 @@ class TrackArchiverCollectionTest {
         mavenArchiver.setDestFile(new File("target/test-data/maven.tracker"));
         new File(mavenArchiver.getDestFile(), "maven").mkdirs();
 
-        File tempFile = File.createTempFile("tracker", "txt");
+        File tempFile = Files.createTempFile("tracker", "txt").toFile();
         File destination = new File("target/test-data/maven/test.txt");
         org.codehaus.plexus.util.FileUtils.copyFile(tempFile, destination);
 
@@ -40,7 +41,7 @@ class TrackArchiverCollectionTest {
         depsArchiver.setDestFile(new File("target/test-data/deps.tracker"));
         new File(mavenArchiver.getDestFile(), "deps").mkdirs();
 
-        File tempFile2 = File.createTempFile("tracker", "txt");
+        File tempFile2 = Files.createTempFile("tracker", "txt").toFile();
         File destination2 = new File("target/test-data/deps/deps.txt");
         org.codehaus.plexus.util.FileUtils.copyFile(tempFile2, destination2);
 

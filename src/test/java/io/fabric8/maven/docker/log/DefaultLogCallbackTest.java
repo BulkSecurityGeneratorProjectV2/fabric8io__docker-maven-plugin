@@ -38,7 +38,7 @@ class DefaultLogCallbackTest {
 
     @BeforeEach
     void before() throws IOException {
-        file = File.createTempFile("logcallback", ".log");
+        file = Files.createTempFile("logcallback", ".log").toFile();
         file.deleteOnExit();
         spec = new LogOutputSpec.Builder().prefix("callback-test> ")
             .file(file.toString()).build();
@@ -75,7 +75,7 @@ class DefaultLogCallbackTest {
         // we don't need the default stream for this test
         callback.close();
 
-        file = File.createTempFile("logcallback-stdout", ".log");
+        file = Files.createTempFile("logcallback-stdout", ".log").toFile();
         file.deleteOnExit();
         FileOutputStream os = new FileOutputStream(file);
         PrintStream ps = new PrintStream(os);

@@ -26,6 +26,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Collections;
@@ -132,7 +133,7 @@ class DockerComposeConfigHandlerTest {
      }
 
     private File getAsFile(String resource) throws IOException {
-        File tempFile = File.createTempFile("compose", ".yml");
+        File tempFile = Files.createTempFile("compose", ".yml").toFile();
         InputStream is = getClass().getResourceAsStream(resource);
         FileUtils.copyInputStreamToFile(is, tempFile);
         return tempFile;

@@ -30,6 +30,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 /**
@@ -62,7 +63,7 @@ class MappingTrackArchiverTest {
         archiver.setDestFile(new File("target/test-data/maven.tracker"));
         new File(archiver.getDestFile(), "maven").mkdirs();
 
-        File tempFile = File.createTempFile("tracker", "txt");
+        File tempFile = Files.createTempFile("tracker", "txt").toFile();
         File destination = new File("target/test-data/maven/test.txt");
         org.codehaus.plexus.util.FileUtils.copyFile(tempFile, destination);
 
